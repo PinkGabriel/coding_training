@@ -1,4 +1,5 @@
 #include<iostream>
+#include<fstream>
 #include<string>
 #include<queue>
 
@@ -6,6 +7,7 @@ using namespace std;
 
 typedef struct bstnode{
 	int val;
+	struct bstnode *parent;
 	struct bstnode *left;
 	struct bstnode *right;
 } Node;
@@ -29,6 +31,7 @@ bool InsertNode(int value)
 		return false;
 	}
 	newnode->val = value;
+	newnode->parent = ptemp;
 	newnode->left = NULL;
 	newnode->right = NULL;
 	if (head == NULL) {
@@ -46,8 +49,9 @@ bool InsertNode(int value)
 void TreeCreate()
 {
 	int temp;
-	cout << "enter the new node's val, EOF to end: ";
-	while (cin >> temp) {
+	ifstream infile("input.txt");
+	//cout << "enter the new node's val, EOF to end: ";
+	while (infile >> temp) {
 		if (InsertNode(temp))
 			cout << "insert success, continue enter or EOF to end" << endl;
 		else
@@ -56,14 +60,33 @@ void TreeCreate()
 	return;
 }
 
-void PrintTree()
+void BFS_PrintTree()
 {
 	Node *temp;
 	queue<Node *> q;
 	q.push(head);
+	Node *sentinel = new Node;
+	sentinel->val = -1;
+	sentinel->parent = NULL;
+	sentinel->left = NULL;
+	sentinel->right = NULL;
+	q.push(sentinel);
+	cout << "BFS:" << endl;
 	while (!q.empty()) {
 		temp = q.front();
-		cout << temp->val << endl;
+		if (temp->val == -1) {
+			cout << '\n';
+			q.pop();
+			if (q.empty()) {
+				return;
+			}
+			q.push(sentinel);
+			continue;
+		}
+		if (temp == head)
+			cout << temp->val << "   ";
+		else
+			cout << temp->val << '(' << temp->parent->val << ')' << "   ";
 		if (temp->left) {
 			q.push(temp->left);
 		}
@@ -75,10 +98,36 @@ void PrintTree()
 	return;
 }
 
+void PreOrderRecur()
+{
+	return;
+}
+void MidOrderRecur()
+{
+	return;
+}
+void PostOrderRecur()
+{
+	return;
+}
+
+void PreOrderIter()
+{
+	return;
+}
+void MidOrderIter()
+{
+	return;
+}
+void PostOrderIter()
+{
+	return;
+}
+
 int main()
 {
 	string str;
 	TreeCreate();
-	PrintTree();
+	BFS_PrintTree();
 	return 0;
 }

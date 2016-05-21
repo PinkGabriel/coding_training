@@ -9,7 +9,7 @@ int main()
 	int random = 100;
 	int r;
 	string str1,str2,str3;
-	ifstream infile("outputfile");
+	ifstream infile("input.txt");
 	vector<int> v(8);
 	v[0] = 1;
 
