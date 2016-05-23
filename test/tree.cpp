@@ -2,6 +2,7 @@
 #include<fstream>
 #include<string>
 #include<queue>
+#include<stack>
 
 using namespace std;
 
@@ -113,6 +114,20 @@ void PostOrderRecur()
 
 void PreOrderIter()
 {
+	stack<Node *> s;
+	Node *temp = NULL;
+	s.push(head);
+	while(!s.empty()) {
+		temp = s.top();
+		s.pop();
+		cout << temp->val << endl;
+		if(temp->right) {
+			s.push(temp->right);
+		}
+		if(temp->left) {
+			s.push(temp->left);
+		}
+	}
 	return;
 }
 void MidOrderIter()
@@ -129,5 +144,6 @@ int main()
 	string str;
 	TreeCreate();
 	BFS_PrintTree();
+	PreOrderIter();
 	return 0;
 }
