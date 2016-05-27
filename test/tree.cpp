@@ -3,6 +3,7 @@
 #include<string>
 #include<queue>
 #include<stack>
+#include<stdlib.h>
 
 using namespace std;
 
@@ -51,6 +52,10 @@ void TreeCreate()
 {
 	int temp;
 	ifstream infile("input.txt");
+	if(!infile) {
+		cerr << "file open fail";
+		exit(0);
+	}
 	//cout << "enter the new node's val, EOF to end: ";
 	while (infile >> temp) {
 		if (InsertNode(temp))
@@ -103,7 +108,7 @@ void PreOrderRecur()
 {
 	return;
 }
-void MidOrderRecur()
+void InOrderRecur()
 {
 	return;
 }
@@ -114,6 +119,7 @@ void PostOrderRecur()
 
 void PreOrderIter()
 {
+ /*
 	stack<Node *> s;
 	Node *temp = NULL;
 	s.push(head);
@@ -128,10 +134,45 @@ void PreOrderIter()
 			s.push(temp->left);
 		}
 	}
+// */
+	stack<Node *> s;
+	Node *temp = NULL;
+	s.push(head);
+	while(!s.empty()){ //每层循环处理一个节点的左边一排左孩子和一个右孩子
+		temp = s.top();
+		while(temp) { //push一排左孩子（如果存在的话）
+			cout << temp->val << endl;
+			temp = temp->left;
+			s.push(temp);
+		}
+		s.pop();
+		if(!s.empty()) { //push一个右孩子
+			temp = s.top();
+			s.pop(); //pop这排中最后一个左孩子
+			s.push(temp->right);
+		}
+	}
 	return;
 }
-void MidOrderIter()
+void InOrderIter()
 {
+	stack<Node *> s;
+	Node *temp = NULL;
+	s.push(head);
+	while(!s.empty()){ //每层循环处理一个节点的左边一排左孩子和一个右孩子
+		temp = s.top();
+		while(temp) { //push一排左孩子（如果存在的话）
+			temp = temp->left;
+			s.push(temp);
+		}
+		s.pop();
+		if(!s.empty()) { //push一个右孩子
+			temp = s.top();
+			cout << temp->val << endl;
+			s.pop(); //pop这排中最后一个左孩子
+			s.push(temp->right);
+		}
+	}
 	return;
 }
 void PostOrderIter()
@@ -145,5 +186,6 @@ int main()
 	TreeCreate();
 	BFS_PrintTree();
 	PreOrderIter();
+	InOrderIter();
 	return 0;
 }
