@@ -6,7 +6,6 @@ using namespace std;
 
 typedef struct bstnode{
 	int val;
-//	struct bstnode *parent;
 	struct bstnode *left;
 	struct bstnode *right;
 } Node;

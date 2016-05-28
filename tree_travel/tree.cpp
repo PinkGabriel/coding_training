@@ -121,7 +121,7 @@ void PreOrderIter()
 {
 
 //////Method 1. 模仿递归
- /*
+// /*
 	stack<Node *> s;
 	Node *temp = NULL;
 	s.push(head);
@@ -139,7 +139,7 @@ void PreOrderIter()
 // */
 
 //////Method 2. 手动遍历
-// /*
+ /*
 	stack<Node *> s;
 	Node *temp = NULL;
 	s.push(head);
@@ -214,7 +214,7 @@ void PostOrderIter()
 {
 
 //////Method 1.1 模仿递归
- /*
+// /*
 	stack<Node *> s;
 	Node *cur = NULL;
 	Node *prev = NULL;
@@ -238,7 +238,7 @@ void PostOrderIter()
 // */
 
 //////Method 1.2 模仿递归 标记第几次入栈
-// /*
+ /*
 	stack< pair<Node*,int> > s;
 	Node *temp = NULL;
 	int flag;
@@ -268,7 +268,9 @@ int main()
 	string str;
 	TreeCreate();
 	BFS_PrintTree();
-//	PreOrderIter();
+	cout << endl;
+	PreOrderIter();
+	cout << endl;
 	InOrderIter();
 	cout << endl;
 	PostOrderIter();
