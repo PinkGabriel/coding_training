@@ -119,6 +119,8 @@ void PostOrderRecur()
 
 void PreOrderIter()
 {
+
+//////Method 1. 模仿递归
  /*
 	stack<Node *> s;
 	Node *temp = NULL;
@@ -135,6 +137,9 @@ void PreOrderIter()
 		}
 	}
 // */
+
+//////Method 2. 手动遍历
+// /*
 	stack<Node *> s;
 	Node *temp = NULL;
 	s.push(head);
@@ -152,10 +157,38 @@ void PreOrderIter()
 			s.push(temp->right);
 		}
 	}
+// */
+
 	return;
 }
 void InOrderIter()
 {
+
+//////Method 1. 模仿递归 标记是否首次入栈
+// /*
+	stack< pair<Node*,int> > s;
+	Node *temp = NULL;
+	int flag;
+	s.push(make_pair(head,1));
+	while(!s.empty()) {
+		temp = s.top().first;
+		flag = s.top().second;
+		s.pop();
+		if(flag) {
+			if(temp->right)
+				s.push( make_pair(temp->right,1) );
+			s.push( make_pair(temp,0) );
+			if(temp->left)
+				s.push( make_pair(temp->left,1));
+		}
+		else
+			cout << temp->val << endl;
+	}
+
+// */
+
+//////Method 2. 手动遍历
+ /*
 	stack<Node *> s;
 	Node *temp = NULL;
 	s.push(head);
@@ -173,10 +206,60 @@ void InOrderIter()
 			s.push(temp->right);
 		}
 	}
+// */
+
 	return;
 }
 void PostOrderIter()
 {
+
+//////Method 1.1 模仿递归
+ /*
+	stack<Node *> s;
+	Node *cur = NULL;
+	Node *prev = NULL;
+	s.push(head);
+	while(!s.empty()) {
+		cur = s.top();
+		if( (cur->left == NULL && cur->right == NULL) ||
+			(prev != NULL && (prev == cur->left || prev == cur->right))) {
+			s.pop();
+			cout << cur->val << endl;
+			prev = cur;
+		}else {
+			if(cur->right) {
+				s.push(cur->right);
+			}
+			if(cur->left) {
+				s.push(cur->left);
+			}
+		}
+	}
+// */
+
+//////Method 1.2 模仿递归 标记第几次入栈
+// /*
+	stack< pair<Node*,int> > s;
+	Node *temp = NULL;
+	int flag;
+	s.push(make_pair(head,1));
+	while(!s.empty()) {
+		temp = s.top().first;
+		flag = s.top().second;
+		s.pop();
+		if(flag) {
+			s.push( make_pair(temp,0) );
+			if(temp->right)
+				s.push( make_pair(temp->right,1) );
+			if(temp->left)
+				s.push( make_pair(temp->left,1));
+		}
+		else
+			cout << temp->val << endl;
+	}
+
+// */
+
 	return;
 }
 
@@ -185,7 +268,9 @@ int main()
 	string str;
 	TreeCreate();
 	BFS_PrintTree();
-	PreOrderIter();
+//	PreOrderIter();
 	InOrderIter();
+	cout << endl;
+	PostOrderIter();
 	return 0;
 }
