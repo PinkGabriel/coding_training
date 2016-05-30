@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# fio.sh fiofile.fio begintime(xx:xx,hour:minute) intervaltime(minute) result_num
+# fio.sh fiofile.fio begintime(xx:xx,hour:minute) intervaltime(minute)
 #
 # $1:fio conf file s2:job begintime s3:time for each job
 #
@@ -16,7 +16,7 @@ at $2 + $3 minutes <<EOF
 fio $1 --output 6vm_${type}_result$num
 EOF
 
-at $2 + $[2 * $3] minutes <<EOF
+at $2 + $((2 * $3)) minutes <<EOF
 fio $1 --output 9vm_${type}_result$num
 EOF
 
