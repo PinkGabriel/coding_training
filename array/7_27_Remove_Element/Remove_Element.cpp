@@ -8,8 +8,16 @@ using namespace std;
 
 class Solution {
 public:
-	string reverseVowels(string s) {
-		
+	int removeElement(vector<int>& nums, int val) {
+		int len = nums.size();
+		for(int i = 0; i < len;) {
+			if(nums[i] == val) {
+				nums[i] = nums[--len];
+			}else {
+				i++;
+			}
+		}
+		return len;
 	}
 };
 
@@ -19,7 +27,7 @@ int main()
 	struct timeval end;
 	unsigned long time;
 
-	vector<int> res = {0};
+	vector<int> input = {3,2,2,3};
 	Solution s;
 
 
@@ -27,21 +35,22 @@ int main()
 
 	/*****************************************/
 
-	
+	int res = s.removeElement(input, 3);	
 
 	/*****************************************/
 
 	gettimeofday(&end,NULL);
+	cout << res << endl;
 
+ /*
 	for(auto i:res) {
-// /*
 		for(auto j:i) {
 			cout << j << ' ';
 		}
 		cout << endl;
-// */
 		cout << i << endl;
 	}
+// */
 
 	time = 1000000 * (end.tv_sec-start.tv_sec)+ end.tv_usec-start.tv_usec;
 	cout << "runtime: " << time << " ums" << endl;

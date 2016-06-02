@@ -33,16 +33,6 @@ int main()
 
 	gettimeofday(&end,NULL);
 
-	for(auto i:res) {
-// /*
-		for(auto j:i) {
-			cout << j << ' ';
-		}
-		cout << endl;
-// */
-		cout << i << endl;
-	}
-
 	time = 1000000 * (end.tv_sec-start.tv_sec)+ end.tv_usec-start.tv_usec;
 	cout << "runtime: " << time << " ums" << endl;
 	return 0;

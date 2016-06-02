@@ -11,18 +11,14 @@ int main()
 	s.push(4);
 	int temp = s.top();
 	cout << temp << endl;
-	cout << "size: " << s.size() << endl;
+
+	s.top()++;
+	temp = s.top();
+	cout << temp << endl;
+
 	s.pop();
 	temp = s.top();
 	cout << temp << endl;
-	temp = s.size();
-	cout << "size: " << s.size() << endl;
-	s.pop();
-	temp = s.top();
-	cout << temp << endl;
-	temp = s.size();
-	cout << "size: " << s.size() << endl;
-	s.pop();
-	cout << "size: " << s.size() << endl;
+
 	return 0;
 }

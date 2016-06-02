@@ -20,5 +20,36 @@ int main()
 		}
 		cout << endl;
 	}
+	
+	cout << endl << endl << endl;
+	vector<int> v1 = {1,2,3};
+	vector<int> v2 = {4,5,6};
+	auto iter = v1.begin();
+	for(; iter != v1.end(); iter++) {
+		if(*iter == 2)
+			break;
+	}
+	v1.insert(v1.erase(iter),v2.begin(),v2.end());
+	iter = v1.begin();
+	cout << "iter point to: " << *iter << endl;
+	for(auto i:v1) {
+		cout << i << ' ';
+	}
+	cout << endl << endl << endl;
+
+	vector<int> v3 = {1,2,3};
+	vector<int> v4 = {4,5,6};
+	int wao = 4;
+	v3 = v4;
+	v4 = {wao, 2};
+	for(auto i:v3) {
+		cout << i << ' ';
+	}
+	cout << endl << endl << endl;
+	for(auto i:v4) {
+		cout << i << ' ';
+	}
+	cout << endl << endl << endl;
+
 	return 0;
 }
