@@ -10,5 +10,9 @@ int main()
 	int j;
 	j = -i;
 	cout << j << endl;
+	int modtest = -3;
+	int c = modtest % 5;
+	cout << c << endl;
+
 	return 0;
 }
