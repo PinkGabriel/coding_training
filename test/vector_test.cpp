@@ -5,6 +5,12 @@ using namespace std;
 
 int main()
 {
+	vector<int> erase_test = {1,1,2,3,5,6,9};
+	erase_test.erase(erase_test.begin(),erase_test.begin() + 1);
+	for(auto i:erase_test) {
+		cout << i << ' ';
+	}
+	cout << endl;
 	//vector<char> board = {'a','b','c','e','b','a','e','c','b','a','e','c'};
 	vector<vector<char> > board = {{'a','b','c'},{'e','b','a'},{'e','c','b'},{'a','e','c'}};
 	//g++ -std=c++11 1_word_search_ori.cpp
