@@ -1,6 +1,7 @@
 #include<iostream>
 #include<string>
 #include<vector>
+#include<unordered_set>
 #include<set>
 #include<algorithm>
 
@@ -21,9 +22,11 @@ int main()
 	//set<int> order;
 	//set<int, greater<int> > order;
 	//set<int, setComp > order;
-	set<int, setComp > order({3,2,1,5,0,10,12});
+	//set<int, setComp > order({3,2,1,5,0,10,12});
+	//unordered_set<int, setComp > order({3,2,1,5,0,10,12});
+	unordered_set<int> order;
 	
- /*
+// /*
 	order.insert(567);
 	order.insert(321);
 	order.insert(23);
@@ -36,6 +39,7 @@ int main()
 	}
 	cout << endl;
 
+ /*
 	if(m.find(1) == m.end()) {
 		cerr << "not find" << endl;
 	} else {
@@ -54,5 +58,6 @@ int main()
 		cout << "find" << endl;
 	}
 
+// */
 	return 0;
 }

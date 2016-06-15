@@ -8,6 +8,9 @@ using namespace std;
 int main()
 {
 	string s = "abcdefg";
+	if(s[s.length()] == '\0') {
+		cout << "last letter null" << endl;
+	}
 	for(char i:s) {
 		cout << i << endl;
 	}
