@@ -120,7 +120,7 @@ void PostOrderRecur()
 void PreOrderIter()
 {
 
-//////Method 1. 模仿递归
+//////Method 1. PreOder 模仿递归
 // /*
 	stack<Node *> s;
 	Node *temp = NULL;
@@ -138,7 +138,7 @@ void PreOrderIter()
 	}
 // */
 
-//////Method 2. 手动遍历
+//////Method 2. PreOder 手动遍历
  /*
 	stack<Node *> s;
 	Node *temp = NULL;
@@ -164,7 +164,41 @@ void PreOrderIter()
 void InOrderIter()
 {
 
-//////Method 1. 模仿递归 标记是否首次入栈
+////////////Method Morris Traversal space O(1)
+/*
+void inorderMorrisTraversal(TreeNode *root) {
+    TreeNode *cur = root, *prev = NULL;
+    while (cur != NULL)
+    {
+        if (cur->left == NULL)          // 1.
+        {
+            printf("%d ", cur->val);
+            cur = cur->right;
+        }
+        else
+        {   
+	    //find predecessor
+	    prev = cur->left;
+            while (prev->right != NULL && prev->right != cur)
+                prev = prev->right;
+
+            if (prev->right == NULL)   // 2.a)
+            {
+                prev->right = cur;
+                cur = cur->left;
+            }
+            else                       // 2.b)
+            {
+                prev->right = NULL;
+                printf("%d ", cur->val);
+                cur = cur->right;
+            }
+        }
+    }
+}
+*/
+
+//////Method 1. InOrder 模仿递归 标记是否首次入栈
 // /*
 	stack< pair<Node*,int> > s;
 	Node *temp = NULL;
@@ -187,7 +221,7 @@ void InOrderIter()
 
 // */
 
-//////Method 2. 手动遍历
+//////Method 2. InOrder 手动遍历
  /*
 	stack<Node *> s;
 	Node *temp = NULL;
@@ -213,7 +247,7 @@ void InOrderIter()
 void PostOrderIter()
 {
 
-//////Method 1.1 模仿递归
+//////Method 1 PostOrder 模仿递归
 // /*
 	stack<Node *> s;
 	Node *cur = NULL;
@@ -237,7 +271,7 @@ void PostOrderIter()
 	}
 // */
 
-//////Method 1.2 模仿递归 标记第几次入栈
+//////Method 2 PostOrder 模仿递归 标记第几次入栈
  /*
 	stack< pair<Node*,int> > s;
 	Node *temp = NULL;

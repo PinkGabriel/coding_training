@@ -8,7 +8,7 @@ using namespace std;
 
 class Solution {
 public:
-    int strStr(string haystack, string needle) {
+    int KMP(string haystack, string needle) {
         int i = 0, j = 0, p = needle.size(), t = haystack.size();
         if(p == 0) return 0;
         if(t == 0) return -1;
@@ -58,7 +58,7 @@ int main()
 	string pattern = "def";
 
 	Solution s;
-	int res = s.strStr(text, pattern);
+	int res = s.KMP(text, pattern);
 
 	gettimeofday(&start,NULL);
 
